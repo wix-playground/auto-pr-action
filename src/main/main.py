@@ -3,9 +3,9 @@ from github_adapter import get_commit, create_pr
 
 def should_create_pr(message):
     auto_pr_hashtags = {
-        "#test_auto_pr",
-        # "#pr",
-        # "#automerge"
+       # "#test_auto_pr",
+        "#pr",
+        "#automerge"
     }
     for hashtag in auto_pr_hashtags:
         if hashtag in message:
