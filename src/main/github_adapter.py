@@ -16,6 +16,37 @@ def get_commit(owner, repo, ref, token):
     
     return response.json()
 
+
+def get_prs_for(owner, repo, branch, token):
+    url = f'{GITHUB_API}/repos/{owner}/{repo}/pulls?head={branch}&base=master'
+    print(url)
+    
+    headers = {"Authorization": f"Bearer {token}"}
+   
+    response = requests.get(url, headers=headers)
+    print("response:", response)
+
+    if response.status_code != requests.codes.ok:
+        return {}
+    
+    return response.json()
+
+
+def is_exists_pr_for(owner, repo, branch, token, sha):
+    all_prs = get_prs_for(owner, repo, branch, token)
+    return any(all_prs, lambda x: x["head"]["sha"] == sha)
+    
+
+
+def create_pr_if_not_exists(owner, repo, branch, sha, message, token):
+    if not is_exists_pr_for(owner, repo, branch, token, sha):
+        print("Creating pr")
+        return create_pr(owner, repo, branch, message, token)
+    
+    print("PR already exists")
+    
+    
+
 def create_pr(owner, repo, branch, message, token):
     url = f'{GITHUB_API}/repos/{owner}/{repo}/pulls'
     print(url)

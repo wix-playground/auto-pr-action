@@ -1,5 +1,5 @@
 import os
-from github_adapter import get_commit, create_pr
+from github_adapter import get_commit, create_pr_if_not_exists
 
 def should_create_pr(message):
     auto_pr_hashtags = {
@@ -29,7 +29,7 @@ def main():
     commit_message = commit["commit"]['message']
 
     if should_create_pr(commit_message.lower()):
-        create_pr(owner, repo, branch, commit_message, token)
+        create_pr_if_not_exists(owner, repo, branch, commit_sha, commit_message, token)
 
 if __name__ == "__main__":
     main()
