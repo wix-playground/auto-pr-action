@@ -18,7 +18,7 @@ def get_commit(owner, repo, ref, token):
 
 
 def get_prs_for(owner, repo, branch, token):
-    url = f'{GITHUB_API}/repos/{owner}/{repo}/pulls?head={branch}&base=master'
+    url = f'{GITHUB_API}/repos/{owner}/{repo}/pulls?head={branch}&base=master&state=all'
     print(url)
     
     headers = {"Authorization": f"Bearer {token}"}
