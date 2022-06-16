@@ -3,7 +3,7 @@ from github_adapter import get_commit, create_pr
 
 def should_create_pr(message):
     auto_pr_hashtags = {
-       # "#test_auto_pr",
+        "#test_auto_pr",
         "#pr",
         "#automerge"
     }
