@@ -1,0 +1,17 @@
+name: "Enable auto pr"
+description: ""
+author: "moriyat@wix.com"
+
+inputs:
+  GITHUB_TOKEN:
+    description: "Access token"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+
+branding:
+  icon: "mic"
+  color: "purple"
