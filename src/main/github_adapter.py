@@ -35,7 +35,7 @@ def get_prs_for(owner, repo, branch, token):
 def is_exists_pr_for(owner, repo, branch, token, sha):
     all_prs = get_prs_for(owner, repo, branch, token)
     print("all_prs", all_prs)
-    return any(all_prs, lambda x: x["head"]["sha"] == sha)
+    return any(map(lambda x: x["head"]["sha"] == sha, all_prs))
     
 
 
