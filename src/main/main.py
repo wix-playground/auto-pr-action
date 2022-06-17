@@ -23,7 +23,6 @@ def main():
     print(f'owner {owner}')
     print(f'repo {repo}')
     print(f'branch {branch}')
-    print(f'token {token}')
     
     commit = get_commit(owner, repo, commit_sha, token)
     commit_message = commit["commit"]['message']
