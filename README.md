@@ -1,4 +1,4 @@
-# auto-pr-action
+# auto-pr-action!
 
 `.github/workflows/enable-auto-pr.yml`
 
