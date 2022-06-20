@@ -24,7 +24,6 @@ def get_prs_for(owner, repo, branch, token):
     headers = {"Authorization": f"Bearer {token}"}
    
     response = requests.get(url, headers=headers)
-    print("response:", response)
 
     if response.status_code != requests.codes.ok:
         return {}
@@ -34,7 +33,6 @@ def get_prs_for(owner, repo, branch, token):
 
 def is_exists_pr_for(owner, repo, branch, token, sha):
     all_prs = get_prs_for(owner, repo, branch, token)
-    print("all_prs", all_prs)
     return any(map(lambda x: x["head"]["sha"] == sha, all_prs))
     
 
@@ -68,5 +66,5 @@ def create_pr(owner, repo, branch, message, token):
 
     if response.status_code != requests.codes.ok:
         return {}
-    
+    print(response.json())
     return response.json()
